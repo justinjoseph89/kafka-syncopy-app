@@ -1,5 +1,6 @@
 FROM openjdk:8
 ENV APPLICATION_NAME=kafka-syncopy-app
+RUN ls
 ENV CONFIG="/config/application.yaml"
 COPY ./target/kafka-syncopy-app-jar-with-dependencies.jar app/kafka-syncopy-app.jar
 COPY ./application.yaml /config/application.yaml
