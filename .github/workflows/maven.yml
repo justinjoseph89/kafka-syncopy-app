@@ -20,10 +20,23 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - uses: actions/checkout@v1
+    - run: mkdir -p target/
+    - run: echo kafka-syncopy-app > target/kafka-syncopy-app-jar-with-dependencies.jar
+    - uses: actions/upload-artifact@v1
+      with:
+        name: kafka-syncopy-app-jar-with-dependencies
+        path: target/
+      
   build-docker:
     runs-on: ubuntu-latest
     needs: build-jar
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v1
+      with:
+        name: kafka-syncopy-app-jar-with-dependencies
+        path: target/
+    - run: cat target/kafka-syncopy-app-jar-with-dependencies.jar
     - name: Build the Docker image
-      run: docker build .. --file Dockerfile --tag kafka-syncopy-app:$(date +%s)
+      run: docker build . --file Dockerfile --tag kafka-syncopy-app:$(date +%s)
