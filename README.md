@@ -4,7 +4,7 @@
 This application will mirror topics from one cluster to another cluster in a time based synchronization.
 
 ## How to configure the application
-1. Read throgh the [application yaml](https://github.com/justinjoseph89/kafka-syncopy-app/blob/master/application.yaml) file.
+1. Read through the [application yaml](https://github.com/justinjoseph89/kafka-syncopy-app/blob/master/application.yaml) file.
     * ``` bootstrapServers``` should be your source cluster, from you want to copy the topics.
     * ``` bootstrapServersTarget``` should be your target cluster, to copy the source topics .
     * ``` zookeeperHost``` your source cluster zookeeper host name. No need to provide the port unless it is other than ```2181```
@@ -28,9 +28,7 @@ This application will mirror topics from one cluster to another cluster in a tim
                   field2:value2
                   } 
                 } ```
-                then this fieled should be specified as ``` data, field1``` 
-  
-    
+                then this fieled should be specified as ``` data, field1```  
     
 ## How to run this
 1. Create fork or clone the project
